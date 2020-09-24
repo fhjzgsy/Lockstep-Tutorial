@@ -38,20 +38,25 @@ namespace Lockstep.Game {
             return _tick2Hash.TryGetValue(tick, out hash);
         }
 
-        public int CalcHash(bool isNeedTrace = false){
+        public int CalcHash(){
             int idx = 0;
-            return CalcHash(ref idx,isNeedTrace);
+            return CalcHash(ref idx);
         }
 
 
-        private int CalcHash(ref int idx,bool isNeedTrace){
+        private int CalcHash(ref int idx){
             int hashIdx = 0;
             int hashCode = 0;
-            var debug = _serviceContainer.GetService<IDebugService>();
             foreach (var svc in _serviceContainer.GetAllServices()) {
                 if (svc is IHashCode hashSvc) {
                     hashCode += hashSvc.GetHash(ref hashIdx) * PrimerLUT.GetPrimer(hashIdx++);
+<<<<<<< HEAD
+<<<<<<< HEAD
                     //if (isNeedTrace) { debug.Trace($"svc {svc.GetType().Name} hashCode{hashCode}" ,true);}
+=======
+>>>>>>> parent of 3dcab3a... [+] 添加客户端模拟回滚机制方便 回滚状态不一致bug的定位
+=======
+>>>>>>> parent of 3dcab3a... [+] 添加客户端模拟回滚机制方便 回滚状态不一致bug的定位
                 }
             }
 

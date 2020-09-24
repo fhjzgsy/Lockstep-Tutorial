@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using Lockstep.Game;
 using Lockstep.Logging;
-using Lockstep.Math;
 using Lockstep.Serialization;
-using Lockstep.Util;
 using NetMsg.Common;
 
 namespace Lockstep.Game {
@@ -29,17 +27,6 @@ namespace Lockstep.Game {
             return new List<InputCmd>() {
                 new InputCmd() {
                     content = CurGameInput.ToBytes()
-                }
-            };
-        }
-
-        public List<InputCmd> GetDebugInputCmds(){
-            return new List<InputCmd>() {
-                new InputCmd() {
-                    content = new PlayerInput() {
-                        inputUV = new LVector2(LRandom.Range(-1,2),LRandom.Range(-1,2)),
-                        skillId = LRandom.Range(0,3)
-                    }.ToBytes()
                 }
             };
         }
